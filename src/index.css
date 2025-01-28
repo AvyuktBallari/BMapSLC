@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {  
+  --font-inter: "Inter"; 
+}
+
+body {
+  background-color: #171212;
+}
