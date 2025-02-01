@@ -13,7 +13,7 @@ function Problem() {
             animate={false}
             type="highlight"
             show={true}
-            color="#1d2d36"
+            color="#141f35"
           >
             <span className="text-[#cdd3d1]">Glaring Problem</span>
           </RoughNotation>
@@ -26,7 +26,7 @@ function Problem() {
         <CongestionStats />
       </div>
 
-      <div className="bg-[#1d2d36] mt-12 p-12 mx-auto">
+      <div className="bg-[#141f35] mt-12 p-12 mx-auto">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left">
           {/* Text Content */}
           <div className="text-[#cdd3d1] font-inter lg:w-1/2">

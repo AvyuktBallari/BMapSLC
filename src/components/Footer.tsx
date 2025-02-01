@@ -40,8 +40,11 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex flex-col gap-2 text-sm">
 
-                <a href="#" className="link link-hover text-gray-400">
+                <a href="/#pricing" className="link link-hover text-gray-400">
                   Pricing
+                </a>
+                <a href="/contact" className="link link-hover text-gray-400">
+                  Contact
                 </a>
               </div>
             </div>

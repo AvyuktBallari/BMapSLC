@@ -2,10 +2,11 @@ import React from "react";
 import contactImage from "/src/assets/contact.svg"; // Ensure this asset exists in your project
 import { RoughNotation } from "react-rough-notation";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const ContactSection: React.FC = () => {
   return (
-    <div className="bg-[#171212]">
+    <div className="">
       <Navbar />
       <div className="max-w-6xl mx-auto font-inter text-[#cdd3d1] px-6 py-12 md:py-20 lg:py-24">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -17,7 +18,7 @@ const ContactSection: React.FC = () => {
                 animate={false}
                 type="highlight"
                 show={true}
-                color="#1d2d36"
+                color="#141f35"
               >
                 Connect
               </RoughNotation>
@@ -30,13 +31,13 @@ const ContactSection: React.FC = () => {
                 type="text"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#1d2d36] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
               <input
                 type="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#1d2d36] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
               <input
   type="tel"
@@ -47,14 +48,14 @@ const ContactSection: React.FC = () => {
   onChange={(e) => {
     e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
   }}
-  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#1d2d36] text-[#cdd3d1]"
+  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
 />
 
               <textarea
                 placeholder="Your Message"
                 rows={5}
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#1d2d36] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
               <button
                 type="submit"
@@ -75,6 +76,8 @@ const ContactSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

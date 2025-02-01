@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
               animate={false}
               type="highlight"
               show={true}
-              color="#1d2d36"
+              color="#141f35"
             >
               late.
             </RoughNotation>
@@ -34,9 +34,9 @@ const HeroSection: React.FC = () => {
                 placeholder="Enter work email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none pr-24"
               />
-              <button className="absolute text-black top-0 right-0 bg-white px-6 py-2 rounded-r-lg h-full">
+              <a href="/contact" className="absolute text-black top-0 right-0 bg-white px-6 py-2 rounded-r-lg h-full">
                 Book a demo
-              </button>
+              </a>
             </div>
           </div>
 

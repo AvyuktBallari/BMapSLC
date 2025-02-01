@@ -4,14 +4,14 @@ import { RoughNotation } from 'react-rough-notation';
 
 function Fix() {
   return (
-    <div className="mt-20 max-w-7xl font-inter mx-auto space-y-20 px-4 sm:px-6 lg:px-8">
+    <div className="mt-20 max-w-6xl font-inter mx-auto space-y-20 px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h1 className="text-5xl font-bold text-[#cdd3d1]">Our{" "} 
             <RoughNotation
                 animate={false}
                 type="box"
                 show={true}
-                color="#1d2d36"
+                color="#141f35"
             >
                 Innovative Solution
             </RoughNotation>
@@ -21,7 +21,7 @@ function Fix() {
         </p>
       </div>
 
-      <div className="flex bg-[#1d2d36] p-7 sm:p-9 rounded-xl flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-10">
+      <div className="flex bg-[#141f35] p-7 sm:p-9 rounded-xl flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-10">
         <div className="lg:w-1/2 text-left space-y-6">
           <h2 className="text-4xl font-bold text-[#cdd3d1]">A Crowded Map.</h2>
           <p className="text-lg text-gray-400">
@@ -41,7 +41,7 @@ function Fix() {
         </div>
       </div>
 
-    <div className="flex bg-[#1d2d36] p-7 sm:p-9 rounded-xl flex-col lg:flex-row-reverse lg:items-center lg:justify-between gap-10">
+    <div className="flex bg-[#141f35] p-7 sm:p-9 rounded-xl flex-col lg:flex-row-reverse lg:items-center lg:justify-between gap-10">
     <div className="lg:w-1/2 text-left space-y-6">
         <h2 className="text-4xl font-bold text-[#cdd3d1]">How It's Done.</h2>
         <p className="text-lg text-gray-400">
