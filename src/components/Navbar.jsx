@@ -43,6 +43,9 @@ export default function Navbar() {
             <a href="/map" className="text-gray-400 hover:text-white">
               Explore
             </a>
+            <a href="/contact" className="text-gray-400 hover:text-white">
+              Contact
+            </a>
 
           </div>
         </div>
@@ -85,7 +88,7 @@ export default function Navbar() {
             isOpen ? "block" : "hidden"
           } md:hidden absolute top-16 left-0 w-full z-[999999] bg-[#181515] shadow-md`}
         >
-          <a href="/" className="block px-6 py-2 text-gray-600 hover:text-black">
+          <a href="/" className="block px-6 py-2 mt-5 text-gray-600 hover:text-black">
             Home
           </a>
           <button
@@ -108,6 +111,9 @@ export default function Navbar() {
           </button>
           <a href="/map" className="block px-6 py-2 text-gray-600 hover:text-black">
             Explore
+          </a>
+          <a href="/contact" className="block px-6 py-2 text-gray-600 hover:text-black">
+            Contact
           </a>
           <div className="block px-6 mt-6 space-y-2 pb-6"> {/* Increased top margin and added bottom padding */}
   <a

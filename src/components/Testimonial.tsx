@@ -64,8 +64,6 @@ const list: TestimonialType[] = [
       name: "Shivam Agarwal",
       text: "BMap is a lifesaver! It always finds the fastest route to school, even when traffic is crazy. Now I’m never late for morning classes.",
       type: refTypes.twitter,
-      link: "https://example.com",
-      img: "https://example.com/emily-profile.jpg", // Replace with the correct image link
     },
     {
       username: "avisator",
@@ -84,7 +82,8 @@ const list: TestimonialType[] = [
     {
       name: "Aiden Brown",
       text: "BMap makes getting around town so much easier. It helps me avoid traffic and find the fastest way home after hanging out with friends.",
-      type: refTypes.other,
+      type: refTypes.twitter,
+      link: "https://www.producthunt.com/products/bmap/reviews?review=667971",
     },
     {
       username: "krishna_routes",
@@ -103,7 +102,8 @@ const list: TestimonialType[] = [
     {
       name: "Yazdun",
       text: "Yo, BMap is awesome! It’s way faster than any other app I’ve used for finding the quickest way to my favorite coffee shop.",
-      type: refTypes.other,
+      type: refTypes.productHunt,
+      link: "https://twitter.com/yifan_fast",
     },
     {
       username: "brian_speed",
@@ -116,6 +116,7 @@ const list: TestimonialType[] = [
       name: "Zawwad Ul Sami",
       text: "BMap is a must-have. It helped me navigate around downtown during rush hour, saving so much time. Definitely recommend it for students with packed schedules.",
       type: refTypes.twitter,
+      link: "https://www.producthunt.com/products/bmap/reviews?review=667971",
     },
     {
       username: "dan_fast",
@@ -130,7 +131,6 @@ const list: TestimonialType[] = [
       name: "Victor Abeledo",
       text: "BMap is a lifesaver for students! It finds the fastest routes and helps me avoid traffic jams every single day. I can’t recommend it enough!",
       type: refTypes.twitter,
-      link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
     },
   ];
   
@@ -182,7 +182,6 @@ const Testimonial: React.FC<TestimonialProps> = ({ i }) => {
 
             {testimonial.link && testimonial.type?.svg && (
               <a
-                href={testimonial.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0"
