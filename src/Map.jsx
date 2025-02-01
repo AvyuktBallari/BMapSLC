@@ -1,0 +1,183 @@
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import { SvgLoader, SvgProxy } from "react-svgmt";
+import busyMap from "./assets/busymap.svg";
+import useRealTimeRoomData from "./hooks/useRealTimeRoomData";
+import useHistoricalRoomData from "./hooks/useHistoricalRoomData";
+import useRoomAnalytics from "./hooks/useRoomAnalytics";
+
+const Map = () => {
+  const [sliderValue, setSliderValue] = useState(60);
+  const minutesAgo = 60 - sliderValue;
+
+  const realTime = useRealTimeRoomData("https://zayaan.adiavi.com/stream");
+  const historical = useHistoricalRoomData(
+    "https://zayaan.adiavi.com/room_data/",
+    minutesAgo
+  );
+  const { analytics, fetchAnalytics } = useRoomAnalytics(
+    "https://zayaan.adiavi.com/analytics"
+  );
+  const { deviationRooms = {}, loading } =
+    minutesAgo === 0 ? realTime : historical;
+  const [selectedRoom, setSelectedRoom] = useState(null);
+
+  const computeBusyness = (value) => Math.min(100, value + 10);
+
+  const computeColor = (value) => {
+    const busyness = computeBusyness(value);
+    const red = Math.min(255, Math.max(0, Math.round((busyness / 100) * 255)));
+    const green = 255 - red;
+    return `rgb(${red}, ${green}, 0)`;
+  };
+
+  const handleRoomClick = (room) => {
+    const formattedRoom = room
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    setSelectedRoom(formattedRoom);
+    fetchAnalytics(room);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-gray-900">
+        <p className="text-gray-300 text-lg font-semibold">Loading...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen font-inter text-[#cdd3d1]">
+      <Navbar />
+      <main className="container max-w-7xl mx-auto px-4 py-8">
+        {/* Time Slider Section */}
+        <div className="mb-8 text-center">
+          <p className="text-sm text-gray-400 mb-2">
+            {minutesAgo === 0
+              ? "Current Time: Just Now"
+              : minutesAgo === 60
+              ? "Current Time: 1 hour ago"
+              : `Current Time: ${minutesAgo} minutes ago`}
+          </p>
+          <input
+            type="range"
+            min="0"
+            max="60"
+            step="5"
+            value={sliderValue}
+            onChange={(e) => setSliderValue(Number(e.target.value))}
+            className="w-full md:w-1/2 accent-[#cdd3d1] transition-all duration-300"
+          />
+        </div>
+
+        {/* Main Content Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Map Section */}
+          <section className="lg:col-span-2 bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-center lg:text-left">
+              {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
+            </h2>
+            <div className="bg-gray-700 p-4 rounded-lg shadow-inner">
+              <SvgLoader path={busyMap}>
+                {Object.keys(deviationRooms["first floor"] || {}).map((room) => (
+                  <SvgProxy
+                    key={room}
+                    selector={`#${room.replace(/\s+/g, "_")}`}
+                    fill={computeColor(deviationRooms["first floor"][room])}
+                    onClick={() => handleRoomClick(room)}
+                    className="cursor-pointer transition-transform duration-300 ease-in-out"
+                    onMouseEnter={(e) => {
+                      e.target.setAttribute("opacity", "0.75");
+                      e.target.style.transform = "scale(1.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.setAttribute("opacity", "1");
+                      e.target.style.transform = "scale(1)";
+                    }}
+                  />
+                ))}
+              </SvgLoader>
+            </div>
+          </section>
+
+          {/* Analytics Panel */}
+          <aside className="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col">
+            <h3 className="text-2xl font-semibold mb-6 text-center">
+              {selectedRoom
+                ? `Analytics for ${selectedRoom}`
+                : "Room Analytics"}
+            </h3>
+            {selectedRoom && analytics ? (
+              <div className="space-y-4 flex-1">
+                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                  <p className="text-xs text-gray-400 uppercase">Busiest Time</p>
+                  <p className="text-lg font-bold text-[#cdd3d1]">
+                    {analytics["busiest_time"] || "N/A"}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                  <p className="text-xs text-gray-400 uppercase">Least Busy Time</p>
+                  <p className="text-lg font-bold text-[#cdd3d1]">
+                    {analytics["quietest_time"] || "N/A"}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                  <p className="text-xs text-gray-400 uppercase">Median Device Amount</p>
+                  <p className="text-lg font-bold text-[#cdd3d1]">
+                    {analytics["median_busy"] || "N/A"}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                  <p className="text-xs text-gray-400 uppercase">Current Busyness</p>
+                  <p className="text-lg font-bold text-[#cdd3d1]">
+                    {computeBusyness(
+                      deviationRooms["first floor"][selectedRoom.toLowerCase()]
+                    )}
+                    %
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <p className="text-center text-[#cdd3d1] flex-1 flex items-center justify-center">
+                Please click a room on the map.
+              </p>
+            )}
+
+            {selectedRoom && (
+              <button
+                onClick={async () => {
+                  try {
+                    const response = await fetch(
+                      "https://zayaan.adiavi.com/generate",
+                      { method: "GET" }
+                    );
+                    if (!response.ok) {
+                      throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", "AI_Generated_Report.pdf");
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                  } catch (error) {
+                    console.error("Error downloading the file:", error);
+                  }
+                }}
+                className="mt-6 w-full bg-[#cdd3d1] hover:cursor-pointer text-gray-900 py-3 rounded-lg font-semibold shadow hover:shadow-xl transition transform hover:scale-105"
+              >
+                Download AI Report
+              </button>
+            )}
+          </aside>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default Map;

@@ -39,34 +39,13 @@ const Footer: React.FC = () => {
                 LINKS
               </div>
               <div className="flex flex-col gap-2 text-sm">
-                <a
-                  href="/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link link-hover text-gray-400"
-                  aria-label="Contact Support"
-                >
-                  Contact
-                </a>
-                <a href="/pricing" className="link link-hover text-gray-400">
+
+                <a href="#" className="link link-hover text-gray-400">
                   Pricing
                 </a>
               </div>
             </div>
 
-            <div>
-              <div className="font-semibold text-gray-400 tracking-widest text-sm mb-3">
-                LEGAL
-              </div>
-              <div className="flex flex-col gap-2 text-sm">
-                <a href="/tos" className="link link-hover text-gray-400">
-                  Terms of Service
-                </a>
-                <a href="/privacy-policy" className="link link-hover text-gray-400">
-                  Privacy Policy
-                </a>
-              </div>
-            </div>
           </div>
 
           {/* Copyright Section */}

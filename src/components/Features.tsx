@@ -115,8 +115,7 @@ const Item = ({
   );
 };
 
-// A component to display the media (video or image) of the feature. If the type is not specified, it will display an empty div.
-// Video are set to autoplay for best UX.
+
 const Media = ({ feature }: { feature: Feature }) => {
   const { type, path, format, alt } = feature;
   const style =

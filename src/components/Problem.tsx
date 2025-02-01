@@ -4,7 +4,7 @@ import CongestionStats from "./Congestion";
 
 function Problem() {
   return (
-    <div className="bg-[#171212]">
+    <div id="problem" className="bg-[#171212]">
       {/* Glaring Problem Section */}
       <div className="items-center mt-20 font-inter text-center justify-center">
         <h1 className="lg:text-6xl text-5xl font-bold text-[#cdd3d1]">
