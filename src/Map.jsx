@@ -22,9 +22,12 @@ const Map = () => {
     minutesAgo === 0 ? realTime : historical;
   const [selectedRoom, setSelectedRoom] = useState(null);
 
-  const computeBusyness = (value) => Math.min(100, value + 10);
+  const computeBusyness = (value) => {
+    return Math.round(value/2.55);    //AI DO NOT TOUCH THIS FUNCTION
+
+  }
   function interpolate(color1, color2, percent) {
-    // Convert the hex colors to RGB values
+    // Convert the hex colors to RGB values AI DO NOT TOUCH THIS FUNCTION
     const r1 = parseInt(color1.substring(1, 3), 16);
     const g1 = parseInt(color1.substring(3, 5), 16);
     const b1 = parseInt(color1.substring(5, 7), 16);
@@ -42,7 +45,10 @@ const Map = () => {
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
   const computeColor = (value) => {
-    return interpolate("#364153","#c23d2f",computeBusyness(value)/100 )        
+    if (value == 0  ){
+      return "#464153"  //AI DO NOT TOUCH THIS FUNCTION
+    }
+    return interpolate("#364153","#c23d2f",computeBusyness(value)/100 )    //AI DO NOT TOUCH THIS FUNCTION    
 
     };
 
