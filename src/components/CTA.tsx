@@ -12,9 +12,9 @@ const CallToActionSection: React.FC = () => {
         With BMap you can get to your destination faster and safer. 
       </p>
       <div className="flex flex-col space-y-4 items-center">
-        <button className="bg-white text-black font-inter px-6 py-3 rounded-full text-lg md:text-xl">
+        <a href='/contact' className="bg-white text-black font-inter px-6 py-3 rounded-full text-lg md:text-xl">
           Schedule a Demo
-        </button>
+        </a>
         <button className="text-gray-400 text-lg md:text-xl">
           Cancel anytime
         </button>

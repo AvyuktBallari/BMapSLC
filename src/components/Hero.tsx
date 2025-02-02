@@ -5,7 +5,7 @@ import { RoughNotation } from "react-rough-notation";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="bg-[#171212]">
+    <div>
       <div className="max-w-6xl mx-auto font-inter text-[#cdd3d1] px-6 py-12 md:py-20 lg:py-24">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Section */}
@@ -22,8 +22,7 @@ const HeroSection: React.FC = () => {
             </RoughNotation>
           </h1>
           <p className="text-lg text-gray-400 mb-8 max-w-md mx-auto md:mx-0">
-            BMap is a web application that helps you find the best route to your
-            destination. No more getting lost or stuck in traffic. Plan your trips
+            BMap is a web application that helps you see which places are more congested or busy then others. No more getting lost or stuck in long lines. Plan your trips
             efficiently and save time.
           </p>
 
@@ -47,14 +46,14 @@ const HeroSection: React.FC = () => {
 
             {/* First Column */}
             <div className="text-center pr-6 mb-8">
-              <p className="text-4xl font-bold">99%</p>
+              <p className="text-4xl font-bold">96%</p>
               <p className="text-gray-500 mt-2">Average Accuracy</p>
             </div>
 
             {/* Second Column */}
             <div className="text-center pl-6 mb-8">
-              <p className="text-4xl font-bold">~20k</p>
-              <p className="text-gray-500 mt-2">Average daily users</p>
+              <p className="text-4xl font-bold">100%</p>
+              <p className="text-gray-500 mt-2">Cost Affordable</p>
             </div>
 
             {/* Horizontal Line */}
@@ -72,13 +71,12 @@ const HeroSection: React.FC = () => {
                 />
               ))}
             </div>
-            <p className="text-gray-400 text-sm">4.5 Average user rating</p>
+            <p className="text-gray-400 text-sm">4.9 Average user rating</p>
           </div>
         </div>
 
         {/* Right Section */}
         <div className="relative">
-          {/* Placeholder for Image */}
           <img
             src={hero}
             alt="Abstract representation of mobile app UI"

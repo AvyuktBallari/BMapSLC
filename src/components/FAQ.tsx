@@ -13,31 +13,17 @@ const faqList: FAQItemProps[] = [
     question: "What is BMap and how does it work?",
     answer: (
       <div className="space-y-2 leading-relaxed">
-        BMap is a navigation tool designed to help you get to your destination faster. It provides real-time traffic updates, crowd density maps, and optimized routes to save you time.
+        BMap is a crowded map tool, designed to help you get to your destination faster. It provides real-time congestion updates, crowd density maps, and optimized colors to save you time.
       </div>
     ),
   },
+
+
   {
-    question: "How accurate is the real-time traffic data?",
+    question: "What are the benefits of using BMap?",
     answer: (
       <p>
-        BMap leverages advanced algorithms and live data sources to ensure high accuracy in real-time traffic information. Updates are refreshed frequently to keep you informed.
-      </p>
-    ),
-  },
-  {
-    question: "Can I use BMap offline?",
-    answer: (
-      <p>
-        While BMap is optimized for online use to provide real-time updates, you can download specific maps for offline use. However, traffic and crowd data require an active internet connection.
-      </p>
-    ),
-  },
-  {
-    question: "Does BMap support multi-stop route planning?",
-    answer: (
-      <p>
-        Yes, BMap allows you to add multiple stops to your journey. Simply select your destinations in the app, and BMap will calculate the most efficient route.
+        BMap helps you avoid congestion and save time. It provides real-time updates on traffic and crowd density, helping you make informed decisions about your travel route.
       </p>
     ),
   },
@@ -45,18 +31,11 @@ const faqList: FAQItemProps[] = [
     question: "How does BMap ensure my data privacy?",
     answer: (
       <p>
-        BMap is committed to user privacy. Your location data is anonymized and encrypted to ensure it is secure and used solely for improving navigation services.
+        BMap is committed to user privacy. No data is stored or shared with third parties.
       </p>
     ),
   },
-  {
-    question: "What platforms is BMap available on?",
-    answer: (
-      <p>
-        BMap is available on both iOS and Android devices. You can download it from the App Store or Google Play Store.
-      </p>
-    ),
-  },
+
 ];
 
 const FaqItem = ({ item }: { item: FAQItemProps }) => {

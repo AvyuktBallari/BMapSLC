@@ -13,32 +13,32 @@ const features: Feature[] = [
     {
       title: "Crowded Map",
       description:
-        "Visualize real-time congestion and traffic density with Crowded Map. Navigate smarter by avoiding busy routes and optimizing your travel time with ease.",
+        "Visualize real-time congestion and density with Crowded Map. Navigate smarter by avoiding congested areas and optimize your travel time with ease.",
       type: "image",
-      path: "https://i.ibb.co/qMkzTbD/Screenshot-2025-01-24-at-22-48-48-BMap.png",
+      path: "https://i.ibb.co/Gfgjv3Xt/image.png",
     },
     {
       title: "Analytics",
       description:
-        "Gain insights into your travel patterns with detailed analytics. Track your routes, optimize travel efficiency, and understand trends to save time on future trips.",
+        "Gain insights on times of high congestion with Analytics. Plan your trips more efficiently and stay ahead of the curve with data-driven decisions.",
       type: "image",
-      path: "https://i.ibb.co/qMkzTbD/Screenshot-2025-01-24-at-22-48-48-BMap.png",
+      path: "https://i.ibb.co/Gfgjv3Xt/image.png",
       alt: "A computer",
     },
     {
       title: "History",
       description:
-        "Keep track of your past journeys with History. Revisit your favorite routes, check previous travel times, and analyze past trips to plan your next adventure.",
+        "Are able to see past congestions and density with History. Be able to predict what times tend to be less congested with our History feature.",
       type: "image",
-      path: "https://i.ibb.co/qMkzTbD/Screenshot-2025-01-24-at-22-48-48-BMap.png",
+      path: "https://i.ibb.co/Gfgjv3Xt/image.png",
       alt: "A computer",
     },
     {
       title: "AI Export",
       description:
-        "Leverage the power of AI to export your optimized routes and travel data. Share your findings, save detailed trip reports, and enjoy personalized recommendations tailored to your preferences.",
+        "Leverage the power of AI to export congested data. ",
         type: "image",
-        path: "https://i.ibb.co/qMkzTbD/Screenshot-2025-01-24-at-22-48-48-BMap.png",
+        path: "https://i.ibb.co/Gfgjv3Xt/image.png",
         alt: "A computer",
     },
   ];

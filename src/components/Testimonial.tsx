@@ -80,7 +80,7 @@ const list: TestimonialType[] = [
       link: "https://www.producthunt.com/products/bmap/reviews?review=667971",
     },
     {
-      name: "Aiden Brown",
+      name: "Manas Bhatt",
       text: "BMap makes getting around town so much easier. It helps me avoid traffic and find the fastest way home after hanging out with friends.",
       type: refTypes.twitter,
       link: "https://www.producthunt.com/products/bmap/reviews?review=667971",
@@ -93,21 +93,21 @@ const list: TestimonialType[] = [
       link: "https://www.producthunt.com/posts/bmap?comment=2707061",
     },
     {
-      username: "yifan_fast",
-      name: "Yifan Goh",
+      username: "peru_beedam",
+      name: "Peru Beedam",
       text: "BMap is a game-changer! It’s perfect for busy students like me who need to get to school, practice, and work quickly.",
       type: refTypes.twitter,
       link: "https://twitter.com/yifan_fast",
     },
     {
-      name: "Yazdun",
+      name: "Aryan Patel",
       text: "Yo, BMap is awesome! It’s way faster than any other app I’ve used for finding the quickest way to my favorite coffee shop.",
       type: refTypes.productHunt,
       link: "https://twitter.com/yifan_fast",
     },
     {
-      username: "brian_speed",
-      name: "Brian Kang",
+      username: "Shourya Sinha",
+      name: "shourya_sinha",
       text: "The app is exactly what I didn’t know I needed. BMap gets me through the most crowded areas in no time.",
       type: refTypes.twitter,
     },
@@ -127,8 +127,8 @@ const list: TestimonialType[] = [
     },
     // The last testimonial is featured on big devices (span 2 columns + big font) 👇
     {
-      username: "VicPivots",
-      name: "Victor Abeledo",
+      username: "CollinMac",
+      name: "Collin MacLaverty",
       text: "BMap is a lifesaver for students! It finds the fastest routes and helps me avoid traffic jams every single day. I can’t recommend it enough!",
       type: refTypes.twitter,
     },

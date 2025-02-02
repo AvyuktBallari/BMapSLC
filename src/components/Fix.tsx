@@ -25,7 +25,7 @@ function Fix() {
         <div className="lg:w-1/2 text-left space-y-6">
           <h2 className="text-4xl font-bold text-[#cdd3d1]">A Crowded Map.</h2>
           <p className="text-lg text-gray-400">
-            A crowded map dynamically shows areas of congestion in real-time. This provides actionable insights into traffic hotspots, crowded zones, and potential delays, helping individuals and organizations make informed decisions.
+            A crowded map dynamically shows areas of congestion in real-time. This provides actionable insights into congested hotspots, crowded zones, and potential delays, helping individuals and organizations make informed decisions.
           </p>
           <p className="text-lg text-gray-400">
             By visualizing real-time congestion data, it becomes easier to identify and address problems quickly. For example, transportation authorities can reroute traffic, event organizers can manage crowd flow, and businesses can optimize delivery schedules.

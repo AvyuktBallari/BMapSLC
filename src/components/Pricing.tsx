@@ -9,7 +9,6 @@ interface PricingPlan {
 }
 
 const PricingSection: React.FC = () => {
-  const [sliderValue, setSliderValue] = useState<number>(50); // Default slider value
 
   const pricingPlans: PricingPlan[] = [
     {
@@ -22,7 +21,7 @@ const PricingSection: React.FC = () => {
         'Map History',
         '24/7 Support',
       ],
-      basePrice: 49,
+      basePrice: 8,
       pricePerUnit: 1,
     },
     {
@@ -35,14 +34,11 @@ const PricingSection: React.FC = () => {
         'Map History',
         '24/7 Support',
       ],
-      basePrice: 100,
+      basePrice: 12,
       pricePerUnit: 2,
     },
   ];
 
-  const calculatePrice = (basePrice: number, pricePerUnit: number): number => {
-    return basePrice + pricePerUnit * sliderValue;
-  };
 
   return (
     <section className="bg-[#141f35] font-inter overflow-hidden" id="pricing">
@@ -73,9 +69,12 @@ const PricingSection: React.FC = () => {
                       <p className="text-sm text-gray-400 font-semibold">from</p>
                     </div>
                   )}
-                  <p className="text-5xl tracking-tight font-extrabold text-[#cdd3d1]">${calculatePrice(plan.basePrice, plan.pricePerUnit)}</p>
+                  <p className="text-5xl tracking-tight font-extrabold text-[#cdd3d1]">
+                    ${plan.basePrice}
+                  </p>
+
                   <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-gray-400 uppercase font-semibold">US</p>
+                    <p className="text-xs text-gray-400 uppercase font-semibold">per Node</p>
                   </div>
                 </div>
                 <ul className="space-y-2.5 leading-relaxed text-base flex-1">
@@ -108,21 +107,7 @@ const PricingSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-12 max-w-2xl mx-auto">
-          <label htmlFor="slider" className="block text-sm font-medium text-gray-400 text-center mb-4">
-            Number of Rooms
-          </label>
-          <input
-            id="slider"
-            type="range"
-            min="0"
-            max="100"
-            value={sliderValue}
-            onChange={(e) => setSliderValue(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer range-sm"
-            style={{ background: `linear-gradient(to right, #cdd3d1 0%, #cdd3d1 ${sliderValue}%, #2d3748 ${sliderValue}%, #2d3748 100%)` }}
-          />
-        </div>
+      
       </div>
     </section>
   );
