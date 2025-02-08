@@ -26,7 +26,7 @@ function Problem() {
         <CongestionStats />
       </div>
 
-      <div className="bg-[#141f35] mt-12 p-12 mx-auto">
+      <div className="bg-[#201919] mt-12 p-12 mx-auto">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left">
           {/* Text Content */}
           <div className="text-[#cdd3d1] font-inter lg:w-1/2">

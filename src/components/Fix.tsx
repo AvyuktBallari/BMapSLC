@@ -21,7 +21,7 @@ function Fix() {
         </p>
       </div>
 
-      <div className="flex bg-[#141f35] p-7 sm:p-9 rounded-xl flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-10">
+      <div className="flex bg-[#1c1616] p-7 sm:p-[50px] rounded-xl flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-10">
         <div className="lg:w-1/2 text-left space-y-6">
           <h2 className="text-4xl font-bold text-[#cdd3d1]">A Crowded Map.</h2>
           <p className="text-lg text-gray-400">
@@ -41,7 +41,7 @@ function Fix() {
         </div>
       </div>
 
-    <div className="flex bg-[#141f35] p-7 sm:p-9 rounded-xl flex-col lg:flex-row-reverse lg:items-center lg:justify-between gap-10">
+    <div className="flex bg-[#1c1616] p-7 sm:p-[50px] rounded-xl flex-col lg:flex-row-reverse lg:items-center lg:justify-between gap-10">
     <div className="lg:w-1/2 text-left space-y-6">
         <h2 className="text-4xl font-bold text-[#cdd3d1]">How It's Done.</h2>
         <p className="text-lg text-gray-400">
