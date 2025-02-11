@@ -1,29 +1,31 @@
     import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import { SvgLoader, SvgProxy } from "react-svgmt";
-import busyMap from "./assets/busymap.svg";
 import useRealTimeRoomData from "./hooks/useRealTimeRoomData";
 import useHistoricalRoomData from "./hooks/useHistoricalRoomData";
 import useRoomAnalytics from "./hooks/useRoomAnalytics";
-
+import { useParams } from "react-router-dom";
 const Map = () => {
   const [sliderValue, setSliderValue] = useState(60);
   const minutesAgo = 60 - sliderValue;
-
-  const realTime = useRealTimeRoomData("https://zayaan.adiavi.com/stream");
+  const params = useParams()
+  const baseurl = `https://zayaan.adiavi.com/companies/${params.company}/`
+  const realTime = useRealTimeRoomData(baseurl+"stream");
+  
   const historical = useHistoricalRoomData(
-    "https://zayaan.adiavi.com/room_data/",
+    baseurl+"room_data",
     minutesAgo
   );
   const { analytics, fetchAnalytics } = useRoomAnalytics(
-    "https://zayaan.adiavi.com/analytics"
+    baseurl+"analytics"
   );
-  const { deviationRooms = {}, loading } =
+  
+  const { deviationRooms = {}, loading }     =
     minutesAgo === 0 ? realTime : historical;
   const [selectedRoom, setSelectedRoom] = useState(null);
 
   const computeBusyness = (value) => {
-    return Math.round(value/2.55);    //AI DO NOT TOUCH THIS FUNCTION
+    return Math.round(value/2.55  );    //AI DO NOT TOUCH THIS FUNCTION
 
   }
   function interpolate(color1, color2, percent) {
@@ -100,8 +102,9 @@ const Map = () => {
             <h2 className="text-xl font-bold mb-4 text-center lg:text-left">
               {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
             </h2>
-            <div className="bg-gray-700 p-4 rounded-lg shadow-inner">
-              <SvgLoader path={busyMap}>
+            <div className="bg-gray-700  rounded-lg shadow-inner  lg:px-40 px-4 py-4 ">
+                  
+              <SvgLoader path={window.location.protocol+"//"+window.location.host+"/src/assets/maps/"+params.company+".svg"}>  
                 {Object.keys(deviationRooms["first floor"] || {}).map((room) => (
                   <SvgProxy
                     key={room}
@@ -169,7 +172,7 @@ const Map = () => {
                 onClick={async () => {
                   try {
                     const response = await fetch(
-                      "https://zayaan.adiavi.com/generate",
+                      baseurl+"generate_pdf",
                       { method: "GET" }
                     );
                     if (!response.ok) {

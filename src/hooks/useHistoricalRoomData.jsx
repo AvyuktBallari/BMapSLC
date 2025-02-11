@@ -9,7 +9,7 @@ const useHistoricalRoomData = (url, minutesAgo) => {
   
       const fetchHistoricalData = async () => {
         try {
-          const response = await fetch(url+minutesAgo);
+          const response = await fetch(url+"/"+minutesAgo);
           const data = await response.json();
           setDeviationRooms(data);
           setLoading(false);

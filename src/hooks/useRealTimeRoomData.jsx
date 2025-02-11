@@ -6,17 +6,20 @@ const useRealTimeRoomData = (url) => {
 
   useEffect(() => {
     if (!url) return;
-
     const eventSource = new EventSource(url);
-    eventSource.onmessage = (event) => {
-      try {
+
+    eventSource.addEventListener("update", (event) => {
+                try {
         const data = JSON.parse(event.data);
-        if (data.deviation_rooms) setDeviationRooms(data.deviation_rooms);
+        if (data.deviation_rooms) {
+          setDeviationRooms(data.deviation_rooms);
+        }
         setLoading(false);
       } catch (error) {
         console.error('Error parsing SSE data:', error);
+        setLoading(false);
       }
-    };
+    }); 
 
     eventSource.onerror = () => eventSource.close();
     return () => eventSource.close();

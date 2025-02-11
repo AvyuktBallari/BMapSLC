@@ -28,17 +28,12 @@ const ContactSection: React.FC = () => {
             </p>
             <form className="flex flex-col gap-4">
               <input
-                type="text"
-                placeholder="Your Name"
-                required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
-              />
-              <input
                 type="email"
                 placeholder="Your Email"
                 required
                 className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
+              
               <input
   type="tel"
   placeholder="Your Phone Number"
