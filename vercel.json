@@ -1,5 +1,11 @@
 {
     "rewrites":  [
       {"source": "/(.*)", "destination": "/"}
-    ]
+    ],
+
+    "build": {
+      "env": {
+        "NEXT_DISABLE_IMAGE_OPTIMIZATION": "true"
+      }
+    }
   }
