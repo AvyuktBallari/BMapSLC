@@ -89,7 +89,9 @@ const Map = () => {
             max="60"
             step="5"
             value={sliderValue}
+            
             onChange={(e) => setSliderValue(Number(e.target.value))}
+            
             className="w-full md:w-1/2 accent-[#cdd3d1] transition-all duration-300"
           />
         </div>
@@ -101,8 +103,8 @@ const Map = () => {
             <h2 className="text-xl font-bold mb-4 text-center lg:text-left">
               {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
             </h2>
-            <div className="bg-gray-700  rounded-lg shadow-inner  lg:px-40 px-4 py-4 ">
-              <SvgLoader path={`${window.location.origin}/${window.location.origin.includes("vercel.app")|| window.location.origin.includes("bmap.dev") ? "": "public"}/maps/${params.company}.svg`}>
+            <div className="bg-gray-700  rounded-lg shadow-inner  md:px-40 px-4 py-4 transition-all duration-300 ">
+              <SvgLoader path={`${window.location.origin}/maps/${params.company}.svg`}>
                 {deviationRooms.map(element => {
                   const room = element.section;
                   return (
@@ -111,12 +113,14 @@ const Map = () => {
                       selector={`#${room.replace(/\s+/g, "_")}`}
                       fill={computeColor(element.busy)}
                       onClick={() => handleRoomClick(room)}
-                      className="cursor-pointer transition-transform duration-300 ease-in-out"
+                      className="cursor-pointer transition-opacity duration-300 ease-in-out"
                       onMouseEnter={(e) => {
-                        e.target.setAttribute("opacity", "0.75");
+                        e.target.setAttribute("opacity", "0.60");
+                        
                       }}
                       onMouseLeave={(e) => {
                         e.target.setAttribute("opacity", "1");
+
                       }}
                     />
                   );
