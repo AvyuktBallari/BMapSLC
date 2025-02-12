@@ -8,4 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+      allowedHosts: ['816f243a-8b8c-467a-bcc6-9407510ae17d-00-2goeyu383kc0d.picard.replit.dev'],
+  }
 })

@@ -72,6 +72,7 @@ const HeroSection: React.FC = () => {
               ))}
             </div>
             <p className="text-gray-400 text-sm">4.9 Average user rating</p>
+
           </div>
         </div>
 
