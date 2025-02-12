@@ -157,7 +157,7 @@ const Map = () => {
                   <p className="text-xs text-gray-400 uppercase">Current Busyness</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {computeBusyness(
-                      deviationRooms.find((room) => room.section === selectedRoom)?.busy || 0
+                      deviationRooms.find((room) => room.section === selectedRoom.toLowerCase())?.busy || 0
                     )}
                     %
                   </p>
