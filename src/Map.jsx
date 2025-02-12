@@ -102,7 +102,7 @@ const Map = () => {
               {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
             </h2>
             <div className="bg-gray-700  rounded-lg shadow-inner  lg:px-40 px-4 py-4 ">
-              <SvgLoader path={`${window.location.origin}/${window.location.origin.includes("vercel") ? "": "src/"}assets/maps/${params.company}.svg`}>
+              <SvgLoader path={`${window.location.origin}/${window.location.origin.includes("vercel.app")|| window.location.origin.includes("bmap.dev") ? "assets": "public"}/maps/${params.company}.svg`}>
                 {deviationRooms.map(element => {
                   const room = element.section;
                   return (
