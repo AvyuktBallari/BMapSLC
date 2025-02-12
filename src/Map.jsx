@@ -1,4 +1,4 @@
-    import React, { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import { SvgLoader, SvgProxy } from "react-svgmt";
 import useRealTimeRoomData from "./hooks/useRealTimeRoomData";
@@ -10,22 +10,22 @@ const Map = () => {
   const minutesAgo = 60 - sliderValue;
   const params = useParams()
   const baseurl = `https://zayaan.adiavi.com/companies/${params.company}/`
-  const realTime = useRealTimeRoomData(baseurl+"stream");
-  
+  const realTime = useRealTimeRoomData(baseurl + "stream");
   const historical = useHistoricalRoomData(
-    baseurl+"room_data",
+    baseurl + "room_data",
     minutesAgo
   );
-  const { analytics, fetchAnalytics } = useRoomAnalytics(
-    baseurl+"analytics"
+  const analytics = useRoomAnalytics(
+    baseurl + "analytics"
   );
-  
-  const { deviationRooms = {}, loading }     =
-    minutesAgo === 0 ? realTime : historical;
-  const [selectedRoom, setSelectedRoom] = useState(null);
 
+  const { deviationRooms = {}, loading } =
+    minutesAgo === 0 ? realTime : historical;
+
+  const [selectedRoom, setSelectedRoom] = useState(null);
+  const currentAnalytics = selectedRoom ? analytics.analytics.find(item => item.section === selectedRoom.toLowerCase()) : null;
   const computeBusyness = (value) => {
-    return Math.round(value/2.55  );    //AI DO NOT TOUCH THIS FUNCTION
+    return Math.round(value / 2.55);    //AI DO NOT TOUCH THIS FUNCTION
 
   }
   function interpolate(color1, color2, percent) {
@@ -33,26 +33,26 @@ const Map = () => {
     const r1 = parseInt(color1.substring(1, 3), 16);
     const g1 = parseInt(color1.substring(3, 5), 16);
     const b1 = parseInt(color1.substring(5, 7), 16);
-  
+
     const r2 = parseInt(color2.substring(1, 3), 16);
     const g2 = parseInt(color2.substring(3, 5), 16);
     const b2 = parseInt(color2.substring(5, 7), 16);
-  
+
     // Interpolate the RGB values
     const r = Math.round(r1 + (r2 - r1) * percent);
     const g = Math.round(g1 + (g2 - g1) * percent);
     const b = Math.round(b1 + (b2 - b1) * percent);
-  
+
     // Convert the interpolated RGB values back to a hex color
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
   const computeColor = (value) => {
-    if (value == 0  ){
+    if (value == 0) {
       return "#464153"  //AI DO NOT TOUCH THIS FUNCTION
     }
-    return interpolate("#364153","#c23d2f",computeBusyness(value)/100 )    //AI DO NOT TOUCH THIS FUNCTION    
+    return interpolate("#364153", "#c23d2f", computeBusyness(value) / 100)    //AI DO NOT TOUCH THIS FUNCTION    
 
-    };
+  };
 
   const handleRoomClick = (room) => {
     const formattedRoom = room
@@ -60,7 +60,6 @@ const Map = () => {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     setSelectedRoom(formattedRoom);
-    fetchAnalytics(room);
   };
 
   if (loading) {
@@ -81,8 +80,8 @@ const Map = () => {
             {minutesAgo === 0
               ? "Current Time: Just Now"
               : minutesAgo === 60
-              ? "Current Time: 1 hour ago"
-              : `Current Time: ${minutesAgo} minutes ago`}
+                ? "Current Time: 1 hour ago"
+                : `Current Time: ${minutesAgo} minutes ago`}
           </p>
           <input
             type="range"
@@ -103,23 +102,27 @@ const Map = () => {
               {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
             </h2>
             <div className="bg-gray-700  rounded-lg shadow-inner  lg:px-40 px-4 py-4 ">
-                  
-              <SvgLoader path={window.location.protocol+"//"+window.location.host+"/src/assets/maps/"+params.company+".svg"}>  
-                {Object.keys(deviationRooms["first floor"] || {}).map((room) => (
-                  <SvgProxy
-                    key={room}
-                    selector={`#${room.replace(/\s+/g, "_")}`}
-                    fill={computeColor(deviationRooms["first floor"][room])}
-                    onClick={() => handleRoomClick(room)}
-                    className="cursor-pointer transition-transform duration-300 ease-in-out"
-                    onMouseEnter={(e) => {
-                      e.target.setAttribute("opacity", "0.75");
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.setAttribute("opacity", "1");
-                    }}
-                  />
-                ))}
+
+              <SvgLoader path={window.location.protocol + "//" + window.location.host + "/src/assets/maps/" + params.company + ".svg"}>
+                {deviationRooms.map(element => {
+                  const room = element.section;
+                  return (
+                    <SvgProxy
+                      key={room}
+                      selector={`#${room.replace(/\s+/g, "_")}`}
+                      fill={computeColor(element.busy)}
+                      onClick={() => handleRoomClick(room)}
+                      className="cursor-pointer transition-transform duration-300 ease-in-out"
+                      onMouseEnter={(e) => {
+                        e.target.setAttribute("opacity", "0.75");
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.setAttribute("opacity", "1");
+                      }}
+                    />
+                  );
+                })}
+
               </SvgLoader>
             </div>
           </section>
@@ -131,31 +134,31 @@ const Map = () => {
                 ? `Analytics for ${selectedRoom}`
                 : "Room Analytics"}
             </h3>
-            {selectedRoom && analytics ? (
+            {selectedRoom && currentAnalytics ? (
               <div className="space-y-4 flex-1">
                 <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
-                  <p className="text-xs text-gray-400 uppercase">Busiest Time</p>
+                  <p className="text-xs text-gray-400 uppercase">Busiest Time Today</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
-                    {analytics["busiest_time"] || "N/A"}
+                    {currentAnalytics.busiest_time || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
-                  <p className="text-xs text-gray-400 uppercase">Least Busy Time</p>
+                  <p className="text-xs text-gray-400 uppercase">Least Busy Time Today</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
-                    {analytics["quietest_time"] || "N/A"}
+                    {currentAnalytics.least_busy_time || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Median Device Amount</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
-                    {analytics["median_busy"] || "N/A"}
+                    {`${currentAnalytics.median_value} Device${currentAnalytics.median_value > 1 ? "s" : ""}` || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Current Busyness</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {computeBusyness(
-                      deviationRooms["first floor"][selectedRoom.toLowerCase()]
+                      deviationRooms.find((room) => room.section === selectedRoom)?.busy || 0
                     )}
                     %
                   </p>
@@ -172,7 +175,7 @@ const Map = () => {
                 onClick={async () => {
                   try {
                     const response = await fetch(
-                      baseurl+"generate_pdf",
+                      baseurl + "generate_pdf",
                       { method: "GET" }
                     );
                     if (!response.ok) {

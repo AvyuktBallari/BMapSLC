@@ -11,8 +11,8 @@ const useRealTimeRoomData = (url) => {
     eventSource.addEventListener("update", (event) => {
                 try {
         const data = JSON.parse(event.data);
-        if (data.deviation_rooms) {
-          setDeviationRooms(data.deviation_rooms);
+        if (data){
+          setDeviationRooms(data);
         }
         setLoading(false);
       } catch (error) {
