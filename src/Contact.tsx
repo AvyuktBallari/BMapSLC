@@ -3,8 +3,10 @@ import contactImage from "/src/assets/contact.svg"; // Ensure this asset exists 
 import { RoughNotation } from "react-rough-notation";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import { useParams } from "react-router-dom";
 const ContactSection: React.FC = () => {
+  const emailInitial = useParams().email;
+  const [email, setEmail] = React.useState(emailInitial);
   return (
     <div className="">
       <Navbar />
@@ -30,12 +32,15 @@ const ContactSection: React.FC = () => {
             <input
                 name="name"
                 type="text"
-                placeholder="Your Email"
+                placeholder="Your Name"
                 required
                 className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
               <input
                 name="email"
+                // initial value is the email from the URL
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="Your Email"
                 required

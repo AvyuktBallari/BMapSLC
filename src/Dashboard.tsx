@@ -50,7 +50,7 @@ const Dashboard = () => {
               <h2 className="text-xl font-semibold mb-2">{company.name}</h2>
               <p className="text-gray-400 mb-4">{company.description}</p>
               <p className="mb-4">Access kitchen, stairs, living room, and garage data.</p>
-              <a href={`/map/${company.linkname}`} className="bg-white text-black hover:cursor-pointer font-semibold py-2 px-4 rounded">
+              <a href={`/maps/${company.linkname}`} className="bg-white text-black hover:cursor-pointer font-semibold py-2 px-4 rounded">
                 View Map
               </a>
             </div>

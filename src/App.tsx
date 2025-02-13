@@ -12,9 +12,10 @@ const App = () => {
 
               <Routes>
                 <Route index element={<Home />} />
-                <Route path="/map" element={<Dashboard />} />
-                <Route path="/map/:company" element={<Map />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/maps/:company" element={<Map />} />
                 <Route path="/contact" element={<ContactSection />} />
+                <Route path="/contact/:email" element={<ContactSection />} />
               </Routes>
             </BrowserRouter>
       </div>
