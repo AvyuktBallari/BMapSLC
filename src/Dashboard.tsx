@@ -1,7 +1,18 @@
 import { Search } from "lucide-react"
 import { RoughNotation } from "react-rough-notation";
 import Navbar from "./components/Navbar"
-
+const companies = [
+  {
+    name: "Sample House",
+    linkname: "techfairhome",
+    description: "A demo house for testing",
+  },
+  {
+    name: "Fine Cuts",
+    linkname: "tilestore",
+    description: "Real store demo",
+  },
+]
 const Dashboard = () => {
   return (
     <div className="font-inter text-white">
@@ -34,23 +45,16 @@ const Dashboard = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-2">Sample House</h2>
-            <p className="text-gray-400 mb-4">A demo house for testing</p>
-            <p className="mb-4">Access kitchen, stairs, living room, and garage data.</p>
-            <a href="/map/techfairhome" className="bg-white text-black hover:cursor-pointer font-semibold py-2 px-4 rounded">
-              View Map
-            </a>
-          </div>
-
-          <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-2">Tile Store</h2>
-            <p className="text-gray-400 mb-4">Tiling Store</p>
-            <p className="mb-4">Find if its packed today</p>
-            <a  className="bg-gray-500 hover:cursor-default text-black font-semibold py-2 px-4 rounded">
-              Disabled
-            </a>
-          </div>
+          {companies.map((company) => (
+            <div key={company.name} className="bg-[#201a1a] border border-[#332a2a] rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-2">{company.name}</h2>
+              <p className="text-gray-400 mb-4">{company.description}</p>
+              <p className="mb-4">Access kitchen, stairs, living room, and garage data.</p>
+              <a href={`/map/${company.linkname}`} className="bg-white text-black hover:cursor-pointer font-semibold py-2 px-4 rounded">
+                View Map
+              </a>
+            </div>
+          ))}
         </div>
       </main>
     </div>
