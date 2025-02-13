@@ -26,8 +26,16 @@ const ContactSection: React.FC = () => {
             <p className="text-lg text-gray-400 mb-8 max-w-md mx-auto md:mx-0">
               We&apos;d love to hear from you! Drop us a message below and we&apos;ll get back to you as soon as possible.
             </p>
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" action="https://zayaan.adiavi.com/contact/contact" method="post">
+            <input
+                name="name"
+                type="text"
+                placeholder="Your Email"
+                required
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
+              />
               <input
+                name="email"
                 type="email"
                 placeholder="Your Email"
                 required
@@ -35,9 +43,9 @@ const ContactSection: React.FC = () => {
               />
               
               <input
+  name="phone_number"
   type="tel"
   placeholder="Your Phone Number"
-  required
   maxLength={10}
   pattern="[0-9]{10}"
   onChange={(e) => {
@@ -47,6 +55,7 @@ const ContactSection: React.FC = () => {
 />
 
               <textarea
+                name="text"
                 placeholder="Your Message"
                 rows={5}
                 required
