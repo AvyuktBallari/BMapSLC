@@ -28,11 +28,11 @@ const HeroSection: React.FC = () => {
           </p>
         
           <div className="flex flex-col gap-4 items-center md:items-start ">
-            <a href="/dashboard" className="bg-white text-black hover:cursor-pointer  py-3 px-6 rounded-lg w-2/3 text-center ">
+            <a href="/dashboard" className="bg-white text-black hover:cursor-pointer  py-3 px-6 rounded-lg md:w-2/3 w-full text-center ">
               See existing maps
             </a>
           </div>
-          <hr className="w-2/3 my-6 border-gray-400" />
+          <hr className="md:w-2/3 w-full my-6 border-gray-400 text-center" />
           <div className="flex flex-col gap-4 items-center md:items-start">
             <div className="relative w-full md:w-2/3">
               <input
