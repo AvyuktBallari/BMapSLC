@@ -109,7 +109,7 @@ export default function Navbar() {
           >
             Pricing
           </button>
-          <a href="/map" className="block px-6 py-2 text-gray-600 hover:text-black">
+          <a href="/dashboard" className="block px-6 py-2 text-gray-600 hover:text-black">
             Current Maps
           </a>
           <a href="/contact" className="block px-6 py-2 text-gray-600 hover:text-black">
