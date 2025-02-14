@@ -21,7 +21,7 @@ const ContactSection: React.FC = () => {
                 animate={false}
                 type="highlight"
                 show={true}
-                color="#141f35"
+                color="#1e2f53"
               >
                 Connect
               </RoughNotation>
@@ -35,7 +35,7 @@ const ContactSection: React.FC = () => {
                 type="text"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none text-[#cdd3d1]"
               />
 
               <input
@@ -46,7 +46,7 @@ const ContactSection: React.FC = () => {
                 type="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none  text-[#cdd3d1]"
               />
               
               <input
@@ -58,7 +58,7 @@ const ContactSection: React.FC = () => {
   onChange={(e) => {
     e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
   }}
-  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
+  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none  text-[#cdd3d1]"
 />
 
               <textarea
@@ -66,7 +66,7 @@ const ContactSection: React.FC = () => {
                 placeholder="Your Message"
                 rows={5}
                 required
-                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none  text-[#cdd3d1]"
               />
               <input name="username" placeholder="Your username" tabIndex={-1} autoComplete="new-password"/>
               <button

@@ -200,7 +200,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ i }) => {
 // The main Testimonials11 component
 const Testimonials11: React.FC = () => {
   return (
-    <section className="bg-[#141f35] mt-20 font-inter" id="testimonials">
+    <section className="bg-[#1e2f53] mt-20 font-inter" id="testimonials">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">

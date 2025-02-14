@@ -26,7 +26,7 @@ const Dashboard = () => {
               animate={false}
               type="highlight"
               show={true}
-              color="#141f35"
+              color="#1e2f53"
             >
               Made Easy
             </RoughNotation>
