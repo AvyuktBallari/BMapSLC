@@ -40,7 +40,7 @@ export default function Navbar() {
             >
               Pricing
             </button>
-            <a href="/map" className="text-gray-400 hover:text-white">
+            <a href="/dashboard" className="text-gray-400 hover:text-white">
               Current Maps
             </a>
             <a href="/contact" className="text-gray-400 hover:text-white">
