@@ -7,3 +7,7 @@
 body {
   background-color: #171212;
 }
+input[name="username"] {
+  position: absolute;
+  left: -999999999px;
+}

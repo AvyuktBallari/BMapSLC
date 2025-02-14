@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 const ContactSection: React.FC = () => {
   const emailInitial = useParams().email;
   const [email, setEmail] = React.useState(emailInitial);
+  const formUrl = "https://zayaan.adiavi.com/contact/contact"; //form url
   return (
     <div className="">
       <Navbar />
@@ -28,7 +29,7 @@ const ContactSection: React.FC = () => {
             <p className="text-lg text-gray-400 mb-8 max-w-md mx-auto md:mx-0">
               We&apos;d love to hear from you! Drop us a message below and we&apos;ll get back to you as soon as possible.
             </p>
-            <form className="flex flex-col gap-4" action="https://zayaan.adiavi.com/contact/contact" method="post">
+            <form className="flex flex-col gap-4" action={formUrl} method="post">
             <input
                 name="name"
                 type="text"
@@ -36,6 +37,7 @@ const ContactSection: React.FC = () => {
                 required
                 className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
+
               <input
                 name="email"
                 // initial value is the email from the URL
@@ -66,6 +68,7 @@ const ContactSection: React.FC = () => {
                 required
                 className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:outline-none bg-[#141f35] text-[#cdd3d1]"
               />
+              <input name="username" placeholder="Your username" tabIndex={-1} autoComplete="new-password"/>
               <button
                 type="submit"
                 className="bg-white hover:cursor-pointer text-black px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors"
