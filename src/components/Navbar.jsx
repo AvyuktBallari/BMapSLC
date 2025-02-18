@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
+import logo from '../assets/logo.svg';
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -20,30 +21,34 @@ export default function Navbar() {
   return (
     <div className="bg-[#140f0f]">
       <nav className="flex items-center font-inter justify-between px-8 py-4 max-w-6xl mx-auto">
-        <a href="/" className="text-xl font-bold text-white">BMap</a>
+      <div className="inline-flex items-center space-x-1">
+            <img src={logo} alt="VeganGrove" className="w-8 h-8 md:w-12 md:h-12 rounded-2xl" />
+            <a href="/" className="text-lg md:text-xl font-bold text-[#cfcfcf] shrink-0">
+              BMap
+            </a>
+      </div>
 
-        {/* Centered navigation links */}
         <div className="flex-grow flex justify-center">
           <div className="hidden md:flex space-x-8">
-            <a href="/" className="text-gray-400 hover:text-white">
+            <a href="/" className="text-gray-300 hover:text-white">
               Home
             </a>
             <button
               onClick={() => handleNav("problem")}
-              className="text-gray-400 hover:text-white cursor-pointer"
+              className="text-gray-300 hover:text-white cursor-pointer"
             >
               Problem
             </button>
             <button
               onClick={() => handleNav("pricing")}
-              className="text-gray-400 hover:text-white cursor-pointer"
+              className="text-gray-300 hover:text-white cursor-pointer"
             >
               Pricing
             </button>
-            <a href="/dashboard" className="text-gray-400 hover:text-white">
+            <a href="/dashboard" className="text-gray-300 hover:text-white">
               Current Maps
             </a>
-            <a href="/contact" className="text-gray-400 hover:text-white">
+            <a href="/contact" className="text-gray-300 hover:text-white">
               Contact
             </a>
 
