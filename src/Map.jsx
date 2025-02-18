@@ -96,7 +96,7 @@ const Map = () => {
   return (
     <div className="min-h-screen font-inter text-[#cdd3d1]">
       <Navbar />
-      <main className="container max-w-7xl mx-auto px-4 py-8">
+      <main className="container max-w-6xl mx-auto px-4 py-8">
         {/* Time Slider Section */}
         <div className="mb-8 text-center">
           <p className="text-sm text-gray-400 mb-2">
@@ -120,11 +120,11 @@ const Map = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <section className="lg:col-span-2 bg-gray-800 p-6 rounded-lg shadow-lg">
+          <section className="lg:col-span-2 bg-[#1c1616] p-6 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-center lg:text-left">
               {selectedRoom ? `Room: ${selectedRoom}` : "Select a room on the map"}
             </h2>
-            <div className="bg-gray-700  rounded-lg shadow-inner  md:px-40 px-4 py-4 transition-all duration-300 ">
+            <div className="bg-[#1a1414]  rounded-lg shadow-inner  md:px-40 px-4 py-4 transition-all duration-300 ">
               <SvgLoader path={`${window.location.origin}/maps/${params.company}.svg`}>
                 {deviationRooms.map(element => {
                   const room = element.section;
@@ -152,7 +152,7 @@ const Map = () => {
           </section>
 
           {/* Analytics Panel */}
-          <aside className="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col">
+          <aside className="bg-[#1c1616] p-6 rounded-lg shadow-lg flex flex-col">
             <h3 className="text-2xl font-semibold mb-6 text-center">
               {selectedRoom
                 ? `Analytics for ${selectedRoom}`
@@ -160,25 +160,25 @@ const Map = () => {
             </h3>
             {selectedRoom && currentAnalytics ? (
               <div className="space-y-4 flex-1">
-                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Busiest Time Today</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {currentAnalytics.busiest_time || "N/A"}
                   </p>
                 </div>
-                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Least Busy Time Today</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {currentAnalytics.least_busy_time || "N/A"}
                   </p>
                 </div>
-                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Median People Amount</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {`${currentAnalytics.median_value} People` || "N/A"}
                   </p>
                 </div>
-                <div className="p-4 bg-gray-700 rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
+                <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Current Busyness</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {computeBusyness(

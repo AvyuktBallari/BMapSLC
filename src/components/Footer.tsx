@@ -16,7 +16,6 @@ const Footer: React.FC = () => {
     <footer className="text-gray-400">
       <div className="max-w-7xl mx-auto px-8 py-24 font-inter">
         <div className="flex flex-col items-center text-center">
-          {/* Logo and App Name */}
           <div className="mb-8">
             <a
               href="/#"
