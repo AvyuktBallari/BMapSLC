@@ -3,7 +3,6 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Map from './Map';
 import ContactSection from './Contact';
-import Analytics from './Analytics';
 import NotFound from './NotFound';
 
 const App = () => {
