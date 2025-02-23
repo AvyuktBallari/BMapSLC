@@ -3,6 +3,8 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Map from './Map';
 import ContactSection from './Contact';
+import Analytics from './Analytics';
+import NotFound from './NotFound';
 
 const App = () => {
 
@@ -16,6 +18,7 @@ const App = () => {
                 <Route path="/maps/:company" element={<Map />} />
                 <Route path="/contact" element={<ContactSection />} />
                 <Route path="/contact/:email" element={<ContactSection />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
       </div>
