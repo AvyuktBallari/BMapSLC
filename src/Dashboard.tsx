@@ -1,6 +1,6 @@
-import { Search } from "lucide-react"
 import { RoughNotation } from "react-rough-notation";
 import Navbar from "./components/Navbar"
+import Search from './icons/Search'
 const companies = [
   {
     name: "Sample House",
@@ -40,7 +40,7 @@ const Dashboard = () => {
               placeholder="Search for maps..."
               className="w-full pl-10 pr-4 py-2 rounded-full bg-[#201a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 transition duration-1000 focus:ring-[#332a2a]"
             />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
         </div>
 

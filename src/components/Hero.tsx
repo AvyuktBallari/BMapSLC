@@ -1,6 +1,6 @@
 import React from "react";
 import hero from "../assets/hero.svg";
-import { Star } from "lucide-react";
+import Star from "../icons/Star"
 import { RoughNotation } from "react-rough-notation";
 
 const HeroSection: React.FC = () => {
@@ -61,7 +61,6 @@ const HeroSection: React.FC = () => {
                 <Star
                   key={i}
                   className="w-5 h-5 text-[#cdd3d1]"
-                  fill="currentColor" // Ensures solid black fill
                 />
               ))}
             </div>
