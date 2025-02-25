@@ -3,11 +3,9 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Map from './Map';
 import ContactSection from './Contact';
-<<<<<<< HEAD
 import NotFound from './NotFound';
-=======
 import Analytics from './Analytics';
->>>>>>> 8eb7736 (por favor need help with analytics issue bah)
+
 
 const App = () => {
 
