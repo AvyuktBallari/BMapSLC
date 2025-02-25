@@ -26,7 +26,6 @@ ChartJS.register(
 
 const Analytics = () => {
   const [selectedRoom, setSelectedRoom] = useState('Room #1');
-  const [selectedTimeRange, setSelectedTimeRange] = useState('Weekly');
 
   // Sample data for charts
   const lineData = {
@@ -94,21 +93,7 @@ const Analytics = () => {
             </span>{" "}
             Dashboard
           </h1>
-          <div className="flex gap-4">
-            {["Daily", "Weekly", "Monthly"].map((range) => (
-              <button
-                key={range}
-                onClick={() => setSelectedTimeRange(range)}
-                className={`px-4 py-2 rounded-lg ${
-                  selectedTimeRange === range
-                    ? "bg-midnight text-white"
-                    : "bg-midnight text-[#cdd3d1]"
-                }`}
-              >
-                {range}
-              </button>
-            ))}
-          </div>
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
