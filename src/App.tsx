@@ -6,7 +6,6 @@ import ContactSection from './Contact';
 import NotFound from './NotFound';
 import Analytics from './Analytics';
 
-
 const App = () => {
 
   return (
