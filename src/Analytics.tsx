@@ -11,7 +11,6 @@ import {
   BarElement,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { BarChart, Activity} from 'lucide-react';
 import Navbar from './components/Navbar';
 
 ChartJS.register(
@@ -114,10 +113,9 @@ const Analytics = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sidebar: Room Status */}
-          <aside className="md:col-span-1 space-y-6">
-            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg">
+            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-h">
               <div className="p-6 border-b border-[#332a2a]">
-                <h2 className="text-xl font-semibold text-[#cdd3d1]">Room Status</h2>
+                <h2 className="text-xl font-semibold text-[#cdd3d1]">Floors</h2>
               </div>
               <div className="p-6">
                 <div className="space-y-4">
@@ -149,15 +147,12 @@ const Analytics = () => {
                 </div>
               </div>
             </div>
-          </aside>
 
           {/* Main Content */}
-          <section className="md:col-span-3 space-y-6">
             {/* Activity Overview */}
-            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg">
+            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-3 max-h">
               <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
                 <h2 className="text-xl font-semibold text-[#cdd3d1]">Activity Overview</h2>
-                <Activity className="w-5 h-5 text-[#cdd3d1]" />
               </div>
               <div className="p-6">
                 <div className="h-72">
@@ -165,6 +160,8 @@ const Analytics = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="grid grid-cols-1  gap-8 max-w-7xl my-8">
 
             <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6">
               {/* Peak Hours Card */}
@@ -173,7 +170,6 @@ const Analytics = () => {
               >
                 <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
                   <h2 className="text-xl font-semibold text-[#cdd3d1]">Peak Hours</h2>
-                  <BarChart className="w-5 h-5 text-[#cdd3d1]" />
                 </div>
                 <div className="p-6">
                   <div className="h-64">
@@ -205,7 +201,6 @@ const Analytics = () => {
                 </div>
               </div>
             </div>
-          </section>
         </div>
       </main>
     </div>
