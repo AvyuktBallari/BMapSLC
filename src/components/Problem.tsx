@@ -12,7 +12,7 @@ function Problem() {
             animate={false}
             type="highlight"
             show={true}
-            color="#2C446F"
+            color="#1d2d36"
           >
             <span className="text-[#cdd3d1]">Glaring Problem</span>
           </RoughNotation>

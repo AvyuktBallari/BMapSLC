@@ -21,7 +21,7 @@ const ContactSection: React.FC = () => {
                 animate={false}
                 type="highlight"
                 show={true}
-                color="#2C446F"
+                color="#1d2d36"
               >
                 Connect
               </RoughNotation>

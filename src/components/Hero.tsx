@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
               animate={false}
               type="highlight"
               show={true}
-              color="#2C446F"
+              color="#1d2d36"
             >
               late.
             </RoughNotation>
