@@ -3,7 +3,11 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import Map from './Map';
 import ContactSection from './Contact';
+<<<<<<< HEAD
 import NotFound from './NotFound';
+=======
+import Analytics from './Analytics';
+>>>>>>> 8eb7736 (por favor need help with analytics issue bah)
 
 const App = () => {
 
@@ -16,6 +20,7 @@ const App = () => {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/maps/:company" element={<Map />} />
                 <Route path="/contact" element={<ContactSection />} />
+                <Route path="/analytics" element={<Analytics />} />
                 <Route path="/contact/:email" element={<ContactSection />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

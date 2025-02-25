@@ -148,7 +148,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ i }) => {
 
   return (
     <li key={i}>
-      <figure className="relative h-full font-bold text-gray-400 p-6 !font-inter bg-[#171212] rounded-lg">
+      <figure className="relative h-full text-gray-400 p-6 !font-inter bg-secondary rounded-lg">
         <blockquote className="relative">
           <p className="text-sm text-base-content/80">{testimonial.text}</p>
         </blockquote>
@@ -200,7 +200,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ i }) => {
 // The main Testimonials11 component
 const Testimonials11: React.FC = () => {
   return (
-    <section className="bg-[#1e2f53] mt-20 font-inter" id="testimonials">
+    <section className="bg-midnight mt-20 font-inter" id="testimonials">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
@@ -231,7 +231,7 @@ const Testimonials11: React.FC = () => {
             {list.length > 0 && (
               <ul className="col-span-2">
                 <li>
-                  <figure className="relative h-full p-6 bg-[#171212] rounded-lg">
+                  <figure className="relative h-full p-6 bg-secondary rounded-lg">
                     <blockquote className="relative p-4">
                       <p className="text-lg font-medium text-base-content">
                         {list[list.length - 1].text}

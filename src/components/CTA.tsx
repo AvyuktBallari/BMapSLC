@@ -2,8 +2,8 @@ import React from 'react';
 
 const CallToActionSection: React.FC = () => {
   return (
-    <div className="bg-[#110d0d] text-center flex flex-col justify-center items-center h-[500px] !font-inter px-4 md:px-8">
-      <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
+    <div className="bg-[#110d0d] font-inter py-12 md:py-20 lg:py-24 text-center flex flex-col justify-center items-center h-[500px] !font-inter px-4 md:px-8">
+      <h1 className="text-[#cdd3d1] font-inter !font-bold text-4xl md:text-6xl mb-4">
         Ready to Transport Better?
       </h1>
       <p className="text-gray-400 text-lg md:text-xl mb-8">

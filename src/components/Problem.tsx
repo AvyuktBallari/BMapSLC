@@ -5,7 +5,6 @@ import CongestionStats from "./Congestion";
 function Problem() {
   return (
     <div id="problem" className="bg-[#171212]">
-      {/* Glaring Problem Section */}
       <div className="items-center mt-20 font-inter text-center justify-center">
         <h1 className="lg:text-6xl text-5xl font-bold text-[#cdd3d1]">
           There is a <br className="lg:hidden" />
@@ -13,7 +12,7 @@ function Problem() {
             animate={false}
             type="highlight"
             show={true}
-            color="#1e2f53"
+            color="#19362d"
           >
             <span className="text-[#cdd3d1]">Glaring Problem</span>
           </RoughNotation>

@@ -19,7 +19,7 @@ const Dashboard = () => {
       <Navbar />
 
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-6xl text-[#cdd3d1] md:text-8xl font-inter font-bold text-center mt-20 mb-8">
+        <h1 className="text-6xl text-[#cdd3d1] md:text-8xl font-inter !font-[700] text-center mt-20 mb-8">
           Transport{" "}
           <br /> <span className="text-5xl md:text-8xl">
             <RoughNotation

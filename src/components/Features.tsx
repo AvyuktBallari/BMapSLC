@@ -44,7 +44,6 @@ const features: Feature[] = [
   ];
   
 
-// An SEO-friendly accordion component including the title and a description (when clicked.)
 const Item = ({
   index,
   feature,
@@ -164,7 +163,7 @@ const FeaturesAccordion = () => {
       className="py-24 !font-inter md:py-32 space-y-24 md:space-y-32 max-w-7xl mx-auto bg-base-100 "
       id="features"
     >
-      <div className="px-8">
+      <div className="px-8 font-inter">
         <p className=" text-gray-400 text-accent mb-2">
           There&apos;s a better way
         </p>

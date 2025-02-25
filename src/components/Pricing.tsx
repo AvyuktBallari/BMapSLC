@@ -41,7 +41,7 @@ const PricingSection: React.FC = () => {
 
 
   return (
-    <section className="bg-[#1e2f53] font-inter overflow-hidden" id="pricing">
+    <section className="bg-midnight font-inter overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-5xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <p className="font-medium text-gray-400 mb-8">Pricing</p>

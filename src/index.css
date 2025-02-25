@@ -2,9 +2,15 @@
 @import "tailwindcss";
 
 @theme {  
+<<<<<<< HEAD
   --font-inter: "Inter";
   --default-font-family: "Inter";
 
+=======
+  --color-midnight: #19362d;
+  --color-background: #171212;
+  --color-secondary: #14040f;
+>>>>>>> 8eb7736 (por favor need help with analytics issue bah)
 }
 
 body {
@@ -13,4 +19,11 @@ body {
 input[name="username"] {
   position: absolute;
   left: -999999999px;
+}
+
+
+.font-inter {
+  font-family: "Bricolage Grotesque", serif;
+  font-weight: 400;
+  font-style: normal;
 }

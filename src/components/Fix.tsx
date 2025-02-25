@@ -4,16 +4,16 @@ import { RoughNotation } from 'react-rough-notation';
 
 const Solution = () => {
   return (
-    <div className="container font-inter mx-auto py-20 px-4 space-y-12 max-w-6xl">
+    <div className="container font-inter mx-auto py-20 px-4 space-y-12 max-w-5xl">
       {/* Header Section */}
       <div className="text-center space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#cdd3d1]">
+        <h1 className="text-4xl md:text-6xl font-bold text-[#cdd3d1]">
           Our{" "}
           <RoughNotation
             animate={false}
-            type="box"
+            type="highlight"
             show={true}
-            color="#141f35"
+            color="#19362d"
           >
             Innovative Solution
           </RoughNotation>
