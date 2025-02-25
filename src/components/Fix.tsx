@@ -13,7 +13,7 @@ const Solution = () => {
             animate={false}
             type="highlight"
             show={true}
-            color="#19362d"
+            color="#2C446F"
           >
             Innovative Solution
           </RoughNotation>

@@ -48,9 +48,7 @@ const Analytics = () => {
       {
         label: "Peak Hours",
         data: [65, 90, 45],
-        backgroundColor: "#1e2f53",
-        borderColor: "#cdd3d1",
-        borderWidth: 1,
+        backgroundColor: "#2C446F",
       },
     ],
   };
@@ -149,7 +147,6 @@ const Analytics = () => {
           <div className="grid grid-cols-1  gap-8 max-w-7xl my-8">
 
             <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6">
-              {/* Peak Hours Card */}
               <div
                 className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-1"
               >
