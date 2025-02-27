@@ -12,6 +12,9 @@ import {
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import Navbar from './components/Navbar';
+import useChartData from './hooks/useChartData';
+import { useParams } from 'react-router-dom';
+import useFloors from './hooks/useFloors';
 
 ChartJS.register(
   CategoryScale,
@@ -25,21 +28,64 @@ ChartJS.register(
 );
 
 const Analytics = () => {
-  const [selectedRoom, setSelectedRoom] = useState('Room #1');
-
-  // Sample data for charts
+  const [selectedRoom, setSelectedRoom] = useState('first_floor');    
+  const params = useParams()
+  const baseurl = `https://zayaan.adiavi.com/companies/${params.company}/`
+  const chartData = useChartData(
+    baseurl + "chart_data",
+    selectedRoom
+  ); 
+  const floorList = useFloors(
+    baseurl + "floors"
+  )
+  console.log(floorList)
+  const stringToColour = (str: string) => {
+    let hash = 0;
+    str.split('').forEach(char => {
+      hash = char.charCodeAt(0) + ((hash << 5) - hash)
+    })
+    let colour = '#'
+    for (let i = 0; i < 3; i++) {
+      const value = (hash >> (i * 8)) & 0xff
+      colour += value.toString(16).padStart(2, '0')
+    }
+    return colour
+  }
+  const capitalizeWords = (str: string) => {
+    return str.toLowerCase().split(' ').map(word => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+  }
+  const replaceUnderscores = (str: string) => {
+    return str.replace(/_/g, ' ');
+  }
+  
+  let datasets = []
+  for(const [key,value] of Object.entries(chartData.chartData)){
+    datasets.push({
+      label:capitalizeWords(key),
+      data:value,
+      
+      fill:false,
+      unit:"devices",
+      borderColor: stringToColour(key),
+      backgroundColor: stringToColour(key),
+      tension: 0.4,
+    })
+  }
+  const generateTimeLabels = () => {
+    const labels = [];
+    for (let hour = 0; hour < 24; hour++) {
+      const period = hour < 12 ? "AM" : "PM";
+      const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+      labels.push(`${displayHour}:00 ${period}`);
+      if (hour !== 23) labels.push(`${displayHour}:30 ${period}`);
+    }
+    return labels;
+  };
   const lineData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-      {
-        label: "Activity",
-        data: [12, 19, 3, 5, 2, 7, 9],
-        fill: false,
-        borderColor: "#cdd3d1",
-        backgroundColor: "#cdd3d1",
-        tension: 0.4,
-      },
-    ],
+    labels: generateTimeLabels(),
+    datasets: datasets
   };
 
   const barData = {
@@ -73,11 +119,7 @@ const Analytics = () => {
     },
   };
 
-  const rooms = [
-    { id: 1, name: "Room #1", status: "Available", utilization: 85 },
-    { id: 2, name: "Room #2", status: "In Use", utilization: 62 },
-    { id: 3, name: "Room #3", status: "Maintenance", utilization: 45 },
-  ];
+  
 
   return (
     <div className="font-inter text-white min-h-screen">
@@ -86,56 +128,47 @@ const Analytics = () => {
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-4xl text-[#cdd3d1] font-bold">
             <span className="relative">
-              <span className="relative z-10">Analytics</span>
+              <span className="relative z-10">Analytics Dashboard</span>
               <span className="absolute inset-0 bg-secondary opacity-30 transform -rotate-2"></span>
-            </span>{" "}
-            Dashboard
+            </span>
+            
           </h1>
           
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Sidebar: Room Status */}
-            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-h">
+          {/* Sidebar: Room Status */} 
+            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-h col-span-3 md:col-span-1">
               <div className="p-6 border-b border-[#332a2a]">
                 <h2 className="text-xl font-semibold text-[#cdd3d1]">Floors</h2>
               </div>
-              <div className="p-6">
+              { floorList.floorList.map( (item) => (
+                <div className="p-6" key={item}>
                 <div className="space-y-4">
-                  {rooms.map((room) => (
                     <div
-                      key={room.id}
-                      onClick={() => setSelectedRoom(room.name)}
+                      onClick={() => setSelectedRoom(item)}
                       className={`p-4 rounded-lg cursor-pointer transition-all ${
-                        selectedRoom === room.name
+                        selectedRoom === item
                           ? "bg-midnight"
                           : "bg-[#332a2a] hover:bg-[#1e2f53]/50"
                       }`}
                     >
                       <div className="flex justify-between items-center">
-                        <span className="font-medium">{room.name}</span>
-                        <span className="text-sm opacity-75">{room.status}</span>
+                        <span className="font-medium">{capitalizeWords(replaceUnderscores(item))}</span>
                       </div>
-                      <div className="mt-2 flex items-center gap-2">
-                        <div className="flex-1 h-2 bg-[#332a2a] rounded-full">
-                          <div
-                            className="h-2 bg-[#cdd3d1] rounded-full"
-                            style={{ width: `${room.utilization}%` }}
-                          />
-                        </div>
-                        <span className="text-sm">{room.utilization}%</span>
-                      </div>
+                      
                     </div>
-                  ))}
+                  
                 </div>
               </div>
+              ))} 
             </div>
 
           {/* Main Content */}
             {/* Activity Overview */}
             <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-3 max-h">
               <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-[#cdd3d1]">Activity Overview</h2>
+                <h2 className="text-xl font-semibold text-[#cdd3d1]">Yesterday's Activity (# of devices)</h2>
               </div>
               <div className="p-6">
                 <div className="h-72">

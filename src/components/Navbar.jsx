@@ -33,12 +33,7 @@ export default function Navbar() {
             <a href="/" className="text-gray-300 hover:text-white">
               Home
             </a>
-            <button
-              onClick={() => handleNav("problem")}
-              className="text-gray-300 hover:text-white cursor-pointer"
-            >
-              Problem
-            </button>
+            
             <button
               onClick={() => handleNav("pricing")}
               className="text-gray-300 hover:text-white cursor-pointer"
@@ -46,7 +41,7 @@ export default function Navbar() {
               Pricing
             </button>
             <a href="/dashboard" className="text-gray-300 hover:text-white">
-              Current Maps
+              Dashboard
             </a>
             <a href="/contact" className="text-gray-300 hover:text-white">
               Contact
@@ -96,15 +91,7 @@ export default function Navbar() {
           <a href="/" className="block px-6 py-2 mt-5 text-gray-600 hover:text-black">
             Home
           </a>
-          <button
-            onClick={() => {
-              handleNav("problem");
-              setIsOpen(false);
-            }}
-            className="block px-6 py-2 text-gray-600 hover:text-black cursor-pointer"
-          >
-            Problem
-          </button>
+          
           <button
             onClick={() => {
               handleNav("pricing");
@@ -115,7 +102,7 @@ export default function Navbar() {
             Pricing
           </button>
           <a href="/dashboard" className="block px-6 py-2 text-gray-600 hover:text-black">
-            Current Maps
+            Dashboard
           </a>
           <a href="/contact" className="block px-6 py-2 text-gray-600 hover:text-black">
             Contact
