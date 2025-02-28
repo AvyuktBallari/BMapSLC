@@ -9,8 +9,9 @@ import {
   Tooltip,
   Legend,
   BarElement,
+  TooltipItem,
 } from 'chart.js';
-import { Line    } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import Navbar from './components/Navbar';
 import useChartData from './hooks/useChartData';
 import { useParams } from 'react-router-dom';
@@ -30,14 +31,14 @@ ChartJS.register(
 
 const Analytics = () => {
   const [selectedRoom, setSelectedRoom] = useState('first_floor');
-  const [loading, setLoading] = useState(false);    
+  const [loading, setLoading] = useState(false);
   const params = useParams()
   const baseurl = `https://zayaan.adiavi.com/companies/${params.company}/`
   const chartData = useChartData(
     baseurl + "chart_data",
     selectedRoom
-  ); 
-  const handleDownload = async (url : string, filename? : string) => {
+  );
+  const handleDownload = async (url: string, filename?: string) => {
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -62,7 +63,7 @@ const Analytics = () => {
     baseurl + "floors"
   )
   const insightList = useInsights(
-    baseurl+ "insights"
+    baseurl + "insights"
   )
   console.log(floorList)
   const stringToColour = (str: string) => {
@@ -85,15 +86,15 @@ const Analytics = () => {
   const replaceUnderscores = (str: string) => {
     return str.replace(/_/g, ' ');
   }
-  
+
   let datasets = []
-  for(const [key,value] of Object.entries(chartData.chartData)){
+  for (const [key, value] of Object.entries(chartData.chartData)) {
     datasets.push({
-      label:capitalizeWords(key),
-      data:value,
-      
-      fill:false,
-      unit:"devices",
+      label: capitalizeWords(key),
+      data: value,
+
+      fill: false,
+      unit: "devices",
       borderColor: stringToColour(key),
       backgroundColor: stringToColour(key),
       tension: 0.4,
@@ -114,7 +115,7 @@ const Analytics = () => {
     datasets: datasets
   };
 
-  
+
 
   const chartOptions = {
     responsive: true,
@@ -125,18 +126,28 @@ const Analytics = () => {
         grid: { color: "#332a2a" },
       },
       y: {
-        ticks: { color: "#cdd3d1" },
+        ticks: {
+          color: "#cdd3d1",
+          callback: function (tickValue: string | number): string { // can be a string or number
+            return `${tickValue}%`;
+          }
+        },
         grid: { color: "#332a2a" },
       },
     },
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem: TooltipItem<'line'>) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}%`
+        }
+      },
       legend: {
         labels: { color: "#cdd3d1" },
       },
     },
   };
 
-  
+
 
   return (
     <div className="font-inter text-white min-h-screen">
@@ -148,80 +159,79 @@ const Analytics = () => {
               <span className="relative z-10">Analytics Dashboard</span>
               <span className="absolute inset-0 bg-secondary opacity-30 transform -rotate-2"></span>
             </span>
-            
+
           </h1>
 
-          <a href={"/maps/"+params.company} className="bg-white text-black rounded-lg p-2 flex items-center justify-center w-1/4">View Map</a>
+          <a href={"/maps/" + params.company} className="bg-white text-black rounded-lg p-2 flex items-center justify-center w-1/4">View Map</a>
 
-          
+
         </div>
 
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Sidebar: Room Status */} 
-            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-h col-span-3 md:col-span-1">
-              <div className="p-6 border-b border-[#332a2a]">
-                <h2 className="text-xl font-semibold text-[#cdd3d1]">Floors</h2>
-              </div>
-              { floorList.floorList.map( (item) => (
-                <div className="p-2" key={item}>
+          {/* Sidebar: Room Status */}
+          <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-h col-span-3 md:col-span-1">
+            <div className="p-6 border-b border-[#332a2a]">
+              <h2 className="text-xl font-semibold text-[#cdd3d1]">Floors</h2>
+            </div>
+            {floorList.floorList.map((item) => (
+              <div className="p-2" key={item}>
                 <div className="space-y-4">
-                    <div
-                      onClick={() => setSelectedRoom(item)}
-                      className={`p-4 rounded-lg cursor-pointer transition-all ${
-                        selectedRoom === item
-                          ? "bg-midnight"
-                          : "bg-[#332a2a] hover:bg-[#1e2f53]/50"
+                  <div
+                    onClick={() => setSelectedRoom(item)}
+                    className={`p-4 rounded-lg cursor-pointer transition-all ${selectedRoom === item
+                        ? "bg-midnight"
+                        : "bg-[#332a2a] hover:bg-[#1e2f53]/50"
                       }`}
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">{capitalizeWords(replaceUnderscores(item))}</span>
-                      </div>
-                      
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium">{capitalizeWords(replaceUnderscores(item))}</span>
                     </div>
-                  
+
+                  </div>
+
                 </div>
               </div>
-              ))} 
-            </div>
+            ))}
+          </div>
 
           {/* Main Content */}
-            {/* Activity Overview */}
-            <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-3 max-h">
-              <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-[#cdd3d1]">Yesterday's Activity</h2>
-              </div>
-              <div className="p-6">
-                <div className="h-72">
-                  <Line data={lineData} options={chartOptions} />
-                </div>
+          {/* Activity Overview */}
+          <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-3 max-h">
+            <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-[#cdd3d1]">Yesterday's Activity</h2>
+            </div>
+            <div className="p-6">
+              <div className="h-72">
+                <Line data={lineData} options={chartOptions} />
               </div>
             </div>
           </div>
-
-              
-
-              {/* Key Insights Card */}
-              <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-w-7xl mt-4">
-                <div className="p-6 border-b border-[#332a2a] col-span-3">
-                  <h2 className="text-xl font-semibold text-[#cdd3d1]">Key Insights</h2>
-                </div>
-                <div className="p-6">
-                  <div className="lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid gap-8">
-                    {!insightList.loading ? insightList.insightList.map( (item) =>(
-                      <div className="p-4 bg-[#332a2a] rounded-lg" key={item}>
-                      <p className="text-sm text-[#cdd3d1]">
-                        {item}
-                      </p>
-                    </div>
-                    )
-                  ):<div></div>
-                    }
-                  </div>    
-            </div>
         </div>
-        <button 
-          onClick={() => handleDownload(baseurl+"generate_pdf", params.company+Date.now().toString())} 
+
+
+
+        {/* Key Insights Card */}
+        <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-w-7xl mt-4">
+          <div className="p-6 border-b border-[#332a2a] col-span-3">
+            <h2 className="text-xl font-semibold text-[#cdd3d1]">Key Insights</h2>
+          </div>
+          <div className="p-6">
+            <div className="lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid gap-8">
+              {!insightList.loading ? insightList.insightList.map((item) => (
+                <div className="p-4 bg-[#332a2a] rounded-lg" key={item}>
+                  <p className="text-sm text-[#cdd3d1]">
+                    {item}
+                  </p>
+                </div>
+              )
+              ) : <div></div>
+              }
+            </div>
+          </div>
+        </div>
+        <button
+          onClick={() => handleDownload(baseurl + "generate_pdf", params.company + Date.now().toString())}
           className="cursor-pointer bg-white mt-4 text-black rounded-lg p-2 flex items-center justify-center w-full"
           disabled={loading}
         >
