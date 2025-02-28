@@ -139,19 +139,19 @@ const Map = () => {
             {selectedRoom && currentAnalytics ? (
               <div className="space-y-4 flex-1">
                 <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
-                  <p className="text-xs text-gray-400 uppercase">Busiest Time Today</p>
+                  <p className="text-xs text-gray-400 uppercase">Busiest Time Yesterday</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {currentAnalytics.busiest_time || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
-                  <p className="text-xs text-gray-400 uppercase">Least Busy Time Today</p>
+                  <p className="text-xs text-gray-400 uppercase">Least Busy Time Yesterday</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {currentAnalytics.least_busy_time || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
-                  <p className="text-xs text-gray-400 uppercase">Median People Amount</p>
+                  <p className="text-xs text-gray-400 uppercase">Median Device Amount</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
                     {`${currentAnalytics.median_value} People` || "N/A"}
                   </p>
