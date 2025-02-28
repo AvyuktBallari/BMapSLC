@@ -29,28 +29,32 @@ ChartJS.register(
 );
 
 const Analytics = () => {
-  const [selectedRoom, setSelectedRoom] = useState('first_floor');    
+  const [selectedRoom, setSelectedRoom] = useState('first_floor');
+  const [loading, setLoading] = useState(false);    
   const params = useParams()
   const baseurl = `https://zayaan.adiavi.com/companies/${params.company}/`
   const chartData = useChartData(
     baseurl + "chart_data",
     selectedRoom
   ); 
-  const handleDownload = async (url : string,filename? :string) => {
+  const handleDownload = async (url : string, filename? : string) => {
     try {
+      setLoading(true);
       const response = await fetch(url);
       const blob = await response.blob();
       const blobUrl = URL.createObjectURL(blob);
 
       const link = document.createElement('a');
       link.href = blobUrl;
-      link.download = filename || 'download'; // Set the desired filename
+      link.download = filename || 'download';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(blobUrl); // Clean up the URL object
+      URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error('Error downloading blob:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -216,7 +220,13 @@ const Analytics = () => {
                   </div>    
             </div>
         </div>
-        <button onClick={() => handleDownload(baseurl+"generate_pdf",params.company+Date.now().toString())}  className="cursor-pointer bg-white mt-4 text-black rounded-lg p-2 flex items-center justify-center w-full">Download as PDF</button>
+        <button 
+          onClick={() => handleDownload(baseurl+"generate_pdf", params.company+Date.now().toString())} 
+          className="cursor-pointer bg-white mt-4 text-black rounded-lg p-2 flex items-center justify-center w-full"
+          disabled={loading}
+        >
+          {loading ? "Downloading..." : "Download as PDF"}
+        </button>
       </main>
     </div>
   );
