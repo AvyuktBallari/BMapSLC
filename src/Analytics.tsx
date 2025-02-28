@@ -128,8 +128,12 @@ const Analytics = () => {
             </span>
             
           </h1>
+
+          <a href={"/maps/"+params.company} className="bg-white text-black rounded-lg p-2 flex items-center justify-center w-1/4">Dashboard</a>
+
           
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sidebar: Room Status */} 
