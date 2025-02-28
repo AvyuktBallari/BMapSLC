@@ -10,7 +10,7 @@ import {
   Legend,
   BarElement,
 } from 'chart.js';
-import { Line, Bar } from 'react-chartjs-2';
+import { Line    } from 'react-chartjs-2';
 import Navbar from './components/Navbar';
 import useChartData from './hooks/useChartData';
 import { useParams } from 'react-router-dom';
@@ -92,16 +92,7 @@ const Analytics = () => {
     datasets: datasets
   };
 
-  const barData = {
-    labels: ["Morning", "Afternoon", "Evening"],
-    datasets: [
-      {
-        label: "Peak Hours",
-        data: [65, 90, 45],
-        backgroundColor: "#2C446F",
-      },
-    ],
-  };
+  
 
   const chartOptions = {
     responsive: true,
