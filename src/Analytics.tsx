@@ -36,6 +36,24 @@ const Analytics = () => {
     baseurl + "chart_data",
     selectedRoom
   ); 
+  const handleDownload = async (url : string,filename? :string) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = filename || 'download'; // Set the desired filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl); // Clean up the URL object
+    } catch (error) {
+      console.error('Error downloading blob:', error);
+    }
+  };
+
   const floorList = useFloors(
     baseurl + "floors"
   )
@@ -129,7 +147,7 @@ const Analytics = () => {
             
           </h1>
 
-          <a href={"/maps/"+params.company} className="bg-white text-black rounded-lg p-2 flex items-center justify-center w-1/4">Dashboard</a>
+          <a href={"/maps/"+params.company} className="bg-white text-black rounded-lg p-2 flex items-center justify-center w-1/4">View Map</a>
 
           
         </div>
@@ -142,7 +160,7 @@ const Analytics = () => {
                 <h2 className="text-xl font-semibold text-[#cdd3d1]">Floors</h2>
               </div>
               { floorList.floorList.map( (item) => (
-                <div className="p-6" key={item}>
+                <div className="p-2" key={item}>
                 <div className="space-y-4">
                     <div
                       onClick={() => setSelectedRoom(item)}
@@ -167,7 +185,7 @@ const Analytics = () => {
             {/* Activity Overview */}
             <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-3 max-h">
               <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-[#cdd3d1]">Yesterday's Activity (# of devices)</h2>
+                <h2 className="text-xl font-semibold text-[#cdd3d1]">Yesterday's Activity</h2>
               </div>
               <div className="p-6">
                 <div className="h-72">
@@ -180,7 +198,7 @@ const Analytics = () => {
               
 
               {/* Key Insights Card */}
-              <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-w-7xl mt-8">
+              <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-w-7xl mt-4">
                 <div className="p-6 border-b border-[#332a2a] col-span-3">
                   <h2 className="text-xl font-semibold text-[#cdd3d1]">Key Insights</h2>
                 </div>
@@ -198,6 +216,7 @@ const Analytics = () => {
                   </div>    
             </div>
         </div>
+        <button onClick={() => handleDownload(baseurl+"generate_pdf",params.company+Date.now().toString())}  className="cursor-pointer bg-white mt-4 text-black rounded-lg p-2 flex items-center justify-center w-full">Download as PDF</button>
       </main>
     </div>
   );
