@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import useChartData from './hooks/useChartData';
 import { useParams } from 'react-router-dom';
 import useFloors from './hooks/useFloors';
+import useInsights from './hooks/useInsights';
 
 ChartJS.register(
   CategoryScale,
@@ -37,6 +38,9 @@ const Analytics = () => {
   ); 
   const floorList = useFloors(
     baseurl + "floors"
+  )
+  const insightList = useInsights(
+    baseurl+ "insights"
   )
   console.log(floorList)
   const stringToColour = (str: string) => {
@@ -177,44 +181,26 @@ const Analytics = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1  gap-8 max-w-7xl my-8">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6">
-              <div
-                className="bg-[#201a1a] border border-[#332a2a] rounded-lg col-span-1"
-              >
-                <div className="p-6 border-b border-[#332a2a] flex justify-between items-center">
-                  <h2 className="text-xl font-semibold text-[#cdd3d1]">Peak Hours</h2>
-                </div>
-                <div className="p-6">
-                  <div className="h-64">
-                    <Bar data={barData} options={chartOptions} />
-                  </div>
-                </div>
-              </div>
+              
 
               {/* Key Insights Card */}
-              <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg">
+              <div className="bg-[#201a1a] border border-[#332a2a] rounded-lg max-w-7xl mt-8">
                 <div className="p-6 border-b border-[#332a2a] col-span-3">
                   <h2 className="text-xl font-semibold text-[#cdd3d1]">Key Insights</h2>
                 </div>
                 <div className="p-6">
-                  <div className="space-y-4">
-                    <div className="p-4 bg-[#332a2a] rounded-lg">
-                      <h4 className="font-medium mb-2">Peak Usage Times</h4>
+                  <div className="lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid gap-8">
+                    {!insightList.loading ? insightList.insightList.map( (item) =>(
+                      <div className="p-4 bg-[#332a2a] rounded-lg" key={item}>
                       <p className="text-sm text-[#cdd3d1]">
-                        Highest activity observed between 2PM - 4PM on weekdays
+                        {item}
                       </p>
                     </div>
-                    <div className="p-4 bg-[#332a2a] rounded-lg">
-                      <h4 className="font-medium mb-2">Utilization Trend</h4>
-                      <p className="text-sm text-[#cdd3d1]">
-                        15% increase in room bookings compared to last month
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    )
+                  ):<div></div>
+                    }
+                  </div>    
             </div>
         </div>
       </main>

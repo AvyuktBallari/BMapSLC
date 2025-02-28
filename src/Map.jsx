@@ -23,7 +23,6 @@ const Map = () => {
     minutesAgo === 0 ? realTime : historical;
 
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const currentAnalytics = selectedRoom ? analytics.analytics.find(item => item.section === selectedRoom.toLowerCase()) : null;
   const computeBusyness = (value) => {
     return Math.round(value / 2.55);    //AI DO NOT TOUCH THIS FUNCTION
@@ -63,28 +62,7 @@ const Map = () => {
     setSelectedRoom(formattedRoom);
   };
 
-  const handleDownload = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(baseurl + "generate_pdf", { method: "GET" });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "AI_Generated_Report.pdf");
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (error) {
-      console.error("Error downloading the file:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-900">
@@ -195,17 +173,13 @@ const Map = () => {
             )}
 
             {selectedRoom && (
+              <a href={"/analytics/"+params.company}>
               <button
-              onClick={handleDownload}
               className="mt-6 w-full bg-[#cdd3d1] hover:cursor-pointer text-gray-900 py-3 rounded-lg font-semibold shadow hover:shadow-xl transition transform hover:scale-105 flex items-center justify-center"
-              disabled={isLoading}
             >
-              {isLoading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-gray-900"></div>
-              ) : (
-                "Download AI Report"
-              )}
+              View Analytics
             </button>
+            </a>
             )}
           </aside>
         </div>
