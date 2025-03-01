@@ -153,8 +153,11 @@ const Map = () => {
                 <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Median Device Amount</p>
                   <p className="text-lg font-bold text-[#cdd3d1]">
-                    {`${currentAnalytics.median_value} People` || "N/A"}
+                    {currentAnalytics.median_value
+                      ? `${currentAnalytics.median_value} ${currentAnalytics.median_value === 1 ? "Device" : "Devices"}`
+                      : "N/A"}
                   </p>
+
                 </div>
                 <div className="p-4 bg-[#171212] rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition">
                   <p className="text-xs text-gray-400 uppercase">Current Busyness</p>
