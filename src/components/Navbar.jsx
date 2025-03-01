@@ -22,7 +22,7 @@ export default function Navbar() {
     <div className="bg-[#140f0f]">
       <nav className="flex items-center font-inter justify-between px-8 py-4 max-w-6xl mx-auto">
       <div className="inline-flex items-center space-x-1">
-            <img src={logo} alt="VeganGrove" className="w-8 h-8 md:w-12 md:h-12 rounded-2xl" />
+            <img src={logo} alt="BMap" className="w-8 h-8 md:w-12 md:h-12 rounded-2xl" />
             <a href="/" className="text-lg md:text-xl font-bold text-[#cfcfcf] shrink-0">
               BMap
             </a>
